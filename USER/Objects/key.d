@@ -1,0 +1,17 @@
+.\objects\key.o: ..\HARDWARE\KEY\key.c
+.\objects\key.o: ..\HARDWARE\KEY\key.h
+.\objects\key.o: ..\USER\stm32f10x.h
+.\objects\key.o: ..\CORE\core_cm3.h
+.\objects\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\key.o: ..\USER\system_stm32f10x.h
+.\objects\key.o: ..\USER\stm32f10x_conf.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
+.\objects\key.o: ..\USER\stm32f10x.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_dbgmcu.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_dma.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_flash.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+.\objects\key.o: ..\STM32F10x_FWLib\inc\misc.h

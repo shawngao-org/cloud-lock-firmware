@@ -1,0 +1,17 @@
+.\objects\flash.o: ..\HARDWARE\FLASH\flash.c
+.\objects\flash.o: ..\HARDWARE\FLASH\flash.h
+.\objects\flash.o: ..\USER\stm32f10x.h
+.\objects\flash.o: ..\CORE\core_cm3.h
+.\objects\flash.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\flash.o: ..\USER\system_stm32f10x.h
+.\objects\flash.o: ..\USER\stm32f10x_conf.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
+.\objects\flash.o: ..\USER\stm32f10x.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_dbgmcu.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_dma.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_flash.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+.\objects\flash.o: ..\STM32F10x_FWLib\inc\misc.h
