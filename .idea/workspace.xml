@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="cloud_lock" targetName="cloud_lock.elf" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug-MinGW-STM32" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW-STM32" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="98f91569-172c-41f5-986d-a21a429b5339" name="Changes" comment=":boom: :fire: Remove code from old repository." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW-STM32" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="1.4" />
+  </component>
+  <component name="ProjectId" id="2TBuKGF9WK0M2Nnbuq7t2ZV6y8N" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/CLionProject/cloud_lock/Drivers/IO/Inc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CLionProject\cloud_lock\Drivers\IO\Inc" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CLionProject\cloud_lock\Drivers\IO\Src" />
+      <recent name="D:\CLionProject\cloud_lock\Drivers\SYS\Src" />
+      <recent name="D:\CLionProject\cloud_lock\Drivers\IO\Inc" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.cloud_lock.elf">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cloud_lock.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cloud_lock" TARGET_NAME="cloud_lock.elf" CONFIG_NAME="Debug-MinGW-STM32" RUN_TARGET_PROJECT_NAME="cloud_lock" RUN_TARGET_NAME="cloud_lock.elf">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cloud_lock" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cloud_lock" TARGET_NAME="cloud_lock.elf" CONFIG_NAME="Debug-MinGW-STM32" version="1" RUN_TARGET_PROJECT_NAME="cloud_lock" RUN_TARGET_NAME="cloud_lock.elf">
+      <openocd version="1" gdb-port="3333" telnet-port="4444" reset-type="NONE" download-type="NONE">
+        <debugger kind="GDB" isBundled="true" />
+      </openocd>
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.cloud_lock.elf" />
+      <item itemvalue="OpenOCD Download &amp; Run.cloud_lock" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="98f91569-172c-41f5-986d-a21a429b5339" name="Changes" comment="" />
+      <created>1690528730163</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690528730163</updated>
+      <workItem from="1690528782787" duration="254000" />
+      <workItem from="1690529057031" duration="251000" />
+      <workItem from="1690529322749" duration="141000" />
+      <workItem from="1690529472672" duration="1238000" />
+      <workItem from="1690530733657" duration="12816000" />
+      <workItem from="1690545877299" duration="8993000" />
+    </task>
+    <task id="LOCAL-00001" summary=":see_no_evil: Add .gitignore file.">
+      <option name="closed" value="true" />
+      <created>1690554675546</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1690554675546</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":boom: :fire: Remove code from old repository.">
+      <option name="closed" value="true" />
+      <created>1690554799606</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1690554799606</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":see_no_evil: Add .gitignore file." />
+    <MESSAGE value=":boom: :fire: Remove code from old repository." />
+    <option name="LAST_COMMIT_MESSAGE" value=":boom: :fire: Remove code from old repository." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
