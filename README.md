@@ -32,7 +32,7 @@ Currently the firmware is developed based on STM32F103RCT6.
 |              | SCK        | PA5     |
 |              | MOSI       | PA7     |
 |              | MISO       | PA6     |
-|              | IRO        | ---     |
+|              | IRQ        | ---     |
 |              | GND        | GND     |
 |              | RST        | PB0     |
 |              | VCC        | 3V3     |
