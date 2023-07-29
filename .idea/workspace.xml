@@ -20,7 +20,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98f91569-172c-41f5-986d-a21a429b5339" name="Changes" comment=":boom: :fire: Remove code from old repository." />
+    <list default="true" id="98f91569-172c-41f5-986d-a21a429b5339" name="Changes" comment=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/IO/Inc/oled.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/IO/Inc/oled.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/IO/Src/oled.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/IO/Src/oled.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/stm32f1xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/stm32f1xx_hal_conf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/stm32f1xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/stm32f1xx_it.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/stm32f1xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/stm32f1xx_hal_msp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/stm32f1xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/stm32f1xx_it.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_lock.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_lock.ioc" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +45,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2023" />
@@ -43,23 +58,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/CLionProject/cloud_lock/Drivers/IO/Inc",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "CMakeSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CLionProject/cloud_lock&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\CLionProject\cloud_lock\Drivers\IO\Inc" />
@@ -71,18 +86,13 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.cloud_lock.elf">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="cloud_lock.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cloud_lock" TARGET_NAME="cloud_lock.elf" CONFIG_NAME="Debug-MinGW-STM32" RUN_TARGET_PROJECT_NAME="cloud_lock" RUN_TARGET_NAME="cloud_lock.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cloud_lock" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cloud_lock" TARGET_NAME="cloud_lock.elf" CONFIG_NAME="Debug-MinGW-STM32" version="1" RUN_TARGET_PROJECT_NAME="cloud_lock" RUN_TARGET_NAME="cloud_lock.elf">
-      <openocd version="1" gdb-port="3333" telnet-port="4444" reset-type="NONE" download-type="NONE">
+    <configuration name="ocd_cloud_lock.elf" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cloud_lock" TARGET_NAME="cloud_lock.elf" CONFIG_NAME="Debug-MinGW-STM32" version="1">
+      <openocd version="1" gdb-port="3333" telnet-port="4444" reset-type="INIT" download-type="UPDATED_ONLY">
         <debugger kind="GDB" isBundled="true" />
       </openocd>
       <method v="2">
@@ -91,7 +101,7 @@
     </configuration>
     <list>
       <item itemvalue="CMake Application.cloud_lock.elf" />
-      <item itemvalue="OpenOCD Download &amp; Run.cloud_lock" />
+      <item itemvalue="OpenOCD Download &amp; Run.ocd_cloud_lock.elf" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -107,7 +117,13 @@
       <workItem from="1690529322749" duration="141000" />
       <workItem from="1690529472672" duration="1238000" />
       <workItem from="1690530733657" duration="12816000" />
-      <workItem from="1690545877299" duration="8993000" />
+      <workItem from="1690545877299" duration="21727000" />
+      <workItem from="1690622956717" duration="2904000" />
+      <workItem from="1690628163672" duration="253000" />
+      <workItem from="1690628421835" duration="570000" />
+      <workItem from="1690629006116" duration="238000" />
+      <workItem from="1690629252746" duration="248000" />
+      <workItem from="1690629789531" duration="516000" />
     </task>
     <task id="LOCAL-00001" summary=":see_no_evil: Add .gitignore file.">
       <option name="closed" value="true" />
@@ -125,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690554799606</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi.">
+      <option name="closed" value="true" />
+      <created>1690554972585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1690554972585</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +164,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value=":see_no_evil: Add .gitignore file." />
     <MESSAGE value=":boom: :fire: Remove code from old repository." />
-    <option name="LAST_COMMIT_MESSAGE" value=":boom: :fire: Remove code from old repository." />
+    <MESSAGE value=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi." />
+    <option name="LAST_COMMIT_MESSAGE" value=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
