@@ -34,6 +34,7 @@ extern "C" {
 #include "oled.h"
 #include "ttp229.h"
 
+#include "rc522.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 

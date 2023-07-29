@@ -14,33 +14,33 @@ static void MX_SPI1_Init(void);
 
 void OLED_display_home_page() {
     OLED_CLR();
-    OLED_DISPLAY_ZH_CN(32,2,12);
-    OLED_DISPLAY_ZH_CN(48,2,13);
-    OLED_DISPLAY_ZH_CN(64,2,14);
-    OLED_DISPLAY_ZH_CN(80,2,15);
+    OLED_DISPLAY_ZH_CN(32, 2, 12);
+    OLED_DISPLAY_ZH_CN(48, 2, 13);
+    OLED_DISPLAY_ZH_CN(64, 2, 14);
+    OLED_DISPLAY_ZH_CN(80, 2, 15);
 }
 
 void OLED_display_enter_pwd() {
     OLED_CLR();
-    OLED_DISPLAY_ZH_CN(0,2,0);
-    OLED_DISPLAY_ZH_CN(16,2,1);
-    OLED_DISPLAY_ZH_CN(32,2,2);
-    OLED_DISPLAY_ZH_CN(48,2,3);
-    OLED_DISPLAY_ZH_CN(64,2,4);
-    OLED_DISPLAY_ZH_CN(80,2,5);
-    OLED_DISPLAY_CHAR(96,2,':',16);
+    OLED_DISPLAY_ZH_CN(0, 2, 0);
+    OLED_DISPLAY_ZH_CN(16, 2, 1);
+    OLED_DISPLAY_ZH_CN(32, 2, 2);
+    OLED_DISPLAY_ZH_CN(48, 2, 3);
+    OLED_DISPLAY_ZH_CN(64, 2, 4);
+    OLED_DISPLAY_ZH_CN(80, 2, 5);
+    OLED_DISPLAY_CHAR(96, 2, ':', 16);
 
-    OLED_DISPLAY_CHAR(0,6,'[',16);
-    OLED_DISPLAY_CHAR(8,6,'#',16);
-    OLED_DISPLAY_CHAR(16,6,']',16);
-    OLED_DISPLAY_ZH_CN(24,6,6);
-    OLED_DISPLAY_ZH_CN(40,6,7);
+    OLED_DISPLAY_CHAR(0, 6, '[', 16);
+    OLED_DISPLAY_CHAR(8, 6, '#', 16);
+    OLED_DISPLAY_CHAR(16, 6, ']', 16);
+    OLED_DISPLAY_ZH_CN(24, 6, 6);
+    OLED_DISPLAY_ZH_CN(40, 6, 7);
 
-    OLED_DISPLAY_CHAR(66,6,'[',16);
-    OLED_DISPLAY_CHAR(74,6,'*',16);
-    OLED_DISPLAY_CHAR(82,6,']',16);
-    OLED_DISPLAY_ZH_CN(90,6,8);
-    OLED_DISPLAY_ZH_CN(106,6,9);
+    OLED_DISPLAY_CHAR(66, 6, '[', 16);
+    OLED_DISPLAY_CHAR(74, 6, '*', 16);
+    OLED_DISPLAY_CHAR(82, 6, ']', 16);
+    OLED_DISPLAY_ZH_CN(90, 6, 8);
+    OLED_DISPLAY_ZH_CN(106, 6, 9);
 }
 
 void enter_pwd() {
@@ -52,7 +52,7 @@ void enter_pwd() {
     while (1) {
         key = TTP_SCAN();
         if ((key >= '0' && key <= '9') && pwd_cur <= 5) {
-            OLED_DISPLAY_CHAR(pwd_cur * pwd_chr_w,4,key,16);
+            OLED_DISPLAY_CHAR(pwd_cur * pwd_chr_w, 4, key, 16);
             pwd[pwd_cur] = key;
             delay_ms(100);
             key = 0;
@@ -65,7 +65,7 @@ void enter_pwd() {
                     return;
                 }
                 pwd[pwd_cur] = 0xff;
-                OLED_DISPLAY_CHAR(pwd_cur * pwd_chr_w,4,' ',16);
+                OLED_DISPLAY_CHAR(pwd_cur * pwd_chr_w, 4, ' ', 16);
                 delay_ms(100);
                 key = 0;
             }
@@ -92,10 +92,44 @@ int main(void) {
     delay_init();
     OLED_INIT();
     TTP_INIT();
-
+    RC522_Init();
     OLED_CLR();
     OLED_display_home_page();
     while (1) {
+        status = PcdRequest(PICC_REQALL,CT);
+        if (status == MI_OK) {
+            OLED_DISPLAY_CHAR(120,0,status,16);
+            status = MI_ERR;
+            status = PcdAnticoll(SN);
+            OLED_DISPLAY_ZH_CN(0,0,10);
+            OLED_DISPLAY_ZH_CN(16,0,11);
+            OLED_DISPLAY_CHAR(32,0,':', 16);
+            OLED_DISPLAY_HEX(40,0,SN[0] >> 4);
+            OLED_DISPLAY_HEX(48,0,SN[0] & 0x0f);
+            OLED_DISPLAY_HEX(56,0,SN[1] >> 4);
+            OLED_DISPLAY_HEX(64,0,SN[1] & 0x0f);
+            OLED_DISPLAY_HEX(72,0,SN[2] >> 4);
+            OLED_DISPLAY_HEX(80,0,SN[2] & 0x0f);
+            OLED_DISPLAY_HEX(88,0,SN[3] >> 4);
+            OLED_DISPLAY_HEX(96,0,SN[3] & 0x0f);
+            WaitCardOff();
+        } else {
+            OLED_DISPLAY_CHAR(120,0,' ',16);
+            OLED_DISPLAY_CHAR(0,0,' ', 16);
+            OLED_DISPLAY_CHAR(8,0,' ', 16);
+            OLED_DISPLAY_CHAR(16,0,' ', 16);
+            OLED_DISPLAY_CHAR(24,0,' ', 16);
+            OLED_DISPLAY_CHAR(32,0,' ', 16);
+            OLED_DISPLAY_CHAR(40,0,' ', 16);
+            OLED_DISPLAY_CHAR(48,0,' ', 16);
+            OLED_DISPLAY_CHAR(56,0,' ', 16);
+            OLED_DISPLAY_CHAR(64,0,' ', 16);
+            OLED_DISPLAY_CHAR(72,0,' ', 16);
+            OLED_DISPLAY_CHAR(80,0,' ', 16);
+            OLED_DISPLAY_CHAR(88,0,' ', 16);
+            OLED_DISPLAY_CHAR(96,0,' ', 16);
+        }
+        /* USER CODE END WHILE */
         key = TTP_SCAN();
         if ((key >= '0' && key <= '9') || key == '#') {
             enter_pwd();
