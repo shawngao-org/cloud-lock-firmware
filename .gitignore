@@ -1,2 +1,3 @@
 cmake-build-debug-mingw-stm32
-.idea
+.idea/workspace.xml
+.idea/vcs.xml
