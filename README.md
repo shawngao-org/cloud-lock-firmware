@@ -1,13 +1,10 @@
 # Cloud Lock Firmware
-***
 This is an IoT door lock firmware based on STM32 MCU.
 
 ## Description
-***
 Currently the firmware is developed based on STM32F103RCT6.
 
 ## Getting Started
-***
 ### Hardware
 | Emoji              | Description             |
 |--------------------|-------------------------|
@@ -47,5 +44,4 @@ Currently the firmware is developed based on STM32F103RCT6.
 + CMake
 
 ## License
-***
 This project is licensed under the ***MIT*** License - see the LICENSE.md file for details.
