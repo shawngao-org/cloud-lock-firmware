@@ -56,6 +56,7 @@ void OLED_DISPLAY_CHAR(unsigned char x, unsigned char y, unsigned char c, unsign
  * @param size Char size
  */
 void OLED_DISPLAY_STR(unsigned char x, unsigned char y, unsigned char* arr, unsigned char size);
+void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex);
 /**
  * Display Chinese
  * @param x X POS
