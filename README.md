@@ -20,6 +20,26 @@ Currently the firmware is developed based on STM32F103RCT6.
 + :heavy_check_mark: RFID-RC522 (8Pin: SDA, SCK, MOSI, MISO, IRO, GND, RST, VCC +3.3V)
 + :x: ESP-8266(ESP-12F)
 
+### Line connection
+| Device       | Device PIN | MCU PIN |
+|--------------|------------|---------|
+| OLED Display | SDA        | PB10    |
+|              | SCL        | PB11    |
+|              | VCC        | 3V3     |
+|              | GND        | GND     |
+| TTP229       | SCL        | PB6     |
+|              | SDO        | PB7     |
+|              | V (VCC)    | VCC5    |
+|              | G (GND)    | GND     |
+| RFID-RC522   | SDA        | PA4     |
+|              | SCK        | PA5     |
+|              | MOSI       | PA7     |
+|              | MISO       | PA6     |
+|              | IRO        | ---     |
+|              | GND        | GND     |
+|              | RST        | PB0     |
+|              | VCC        | 3V3     |
+
 ### Software
 + CLion or other IDE
 + STM32CubeMX
