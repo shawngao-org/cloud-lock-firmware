@@ -20,18 +20,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98f91569-172c-41f5-986d-a21a429b5339" name="Changes" comment=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi.">
+    <list default="true" id="98f91569-172c-41f5-986d-a21a429b5339" name="Changes" comment=":see_no_evil: Update .gitignore">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/IO/Inc/oled.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/IO/Inc/oled.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/IO/Src/oled.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/IO/Src/oled.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/stm32f1xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/stm32f1xx_hal_conf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/stm32f1xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/stm32f1xx_it.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/stm32f1xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/stm32f1xx_hal_msp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/stm32f1xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/stm32f1xx_it.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud_lock.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/cloud_lock.ioc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +114,8 @@
       <workItem from="1690628421835" duration="570000" />
       <workItem from="1690629006116" duration="238000" />
       <workItem from="1690629252746" duration="248000" />
-      <workItem from="1690629789531" duration="516000" />
+      <workItem from="1690629789531" duration="1028000" />
+      <workItem from="1690630844189" duration="78000" />
     </task>
     <task id="LOCAL-00001" summary=":see_no_evil: Add .gitignore file.">
       <option name="closed" value="true" />
@@ -149,7 +141,71 @@
       <option name="project" value="LOCAL" />
       <updated>1690554972585</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=":sparkles: Enable SPI">
+      <option name="closed" value="true" />
+      <created>1690630335042</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630335042</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":wrench: Update project files.">
+      <option name="closed" value="true" />
+      <created>1690630441500</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630441500</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":sparkles: Add OLED display hex number func.">
+      <option name="closed" value="true" />
+      <created>1690630490990</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630490990</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":sparkles: Migrate the RFID-RC522 driver to the HAL library version.">
+      <option name="closed" value="true" />
+      <created>1690630537011</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630537011</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":sparkles: draw simple interface, And realize keyboard input and card reading function.">
+      <option name="closed" value="true" />
+      <created>1690630604246</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630604246</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":pencil: Add README">
+      <option name="closed" value="true" />
+      <created>1690630641534</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630641534</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":see_no_evil: Update .gitignore">
+      <option name="closed" value="true" />
+      <created>1690630681385</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630681385</updated>
+    </task>
+    <task id="LOCAL-00011" summary=":see_no_evil: Update .gitignore">
+      <option name="closed" value="true" />
+      <created>1690630779783</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1690630779783</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +221,14 @@
     <MESSAGE value=":see_no_evil: Add .gitignore file." />
     <MESSAGE value=":boom: :fire: Remove code from old repository." />
     <MESSAGE value=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi." />
-    <option name="LAST_COMMIT_MESSAGE" value=":building_construction: :recycle: Rewrite all the codes to the HAL library version, and give up using Keil. The new environment is CLion, CMake, gcc-arm-none-eabi." />
+    <MESSAGE value=":sparkles: Enable SPI" />
+    <MESSAGE value=":wrench: Update project files." />
+    <MESSAGE value=":sparkles: Add OLED display hex number func." />
+    <MESSAGE value=":sparkles: Migrate the RFID-RC522 driver to the HAL library version." />
+    <MESSAGE value=":sparkles: draw simple interface, And realize keyboard input and card reading function." />
+    <MESSAGE value=":pencil: Add README" />
+    <MESSAGE value=":see_no_evil: Update .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value=":see_no_evil: Update .gitignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
