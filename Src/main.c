@@ -1,9 +1,56 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2023 STMicroelectronics.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
 CRC_HandleTypeDef hcrc;
 
 SPI_HandleTypeDef hspi1;
 
+UART_HandleTypeDef huart1;
+
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 
 static void MX_CRC_Init(void);
@@ -12,6 +59,13 @@ static void MX_GPIO_Init(void);
 
 static void MX_SPI1_Init(void);
 
+static void MX_USART1_UART_Init(void);
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
 void OLED_display_home_page() {
     OLED_CLR();
     OLED_DISPLAY_ZH_CN(32, 2, 12);
@@ -72,64 +126,89 @@ void enter_pwd() {
         }
     }
 }
+/* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
   * @retval int
   */
 int main(void) {
+    /* USER CODE BEGIN 1 */
     unsigned char key = 0xff;
     unsigned char CT[2];
     unsigned char SN[4];
     unsigned char status;
+    /* USER CODE END 1 */
 
+    /* MCU Configuration--------------------------------------------------------*/
+
+    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
     HAL_Init();
-    SystemClock_Config();
-    MX_CRC_Init();
-    MX_GPIO_Init();
-    MX_SPI1_Init();
 
+    /* USER CODE BEGIN Init */
     delay_init();
     OLED_INIT();
     TTP_INIT();
     RC522_Init();
     OLED_CLR();
     OLED_display_home_page();
+    /* USER CODE END Init */
+
+    /* Configure the system clock */
+    SystemClock_Config();
+
+    /* USER CODE BEGIN SysInit */
+
+    /* USER CODE END SysInit */
+
+    /* Initialize all configured peripherals */
+    MX_CRC_Init();
+    MX_GPIO_Init();
+    MX_SPI1_Init();
+    MX_USART1_UART_Init();
+    /* USER CODE BEGIN 2 */
+
+    /* USER CODE END 2 */
+
+    /* Infinite loop */
+    /* USER CODE BEGIN WHILE */
     while (1) {
-        status = PcdRequest(PICC_REQALL,CT);
+        /* USER CODE END WHILE */
+
+        /* USER CODE BEGIN 3 */
+        status = PcdRequest(PICC_REQALL, CT);
         if (status == MI_OK) {
-            OLED_DISPLAY_CHAR(120,0,status,16);
+            OLED_DISPLAY_CHAR(120, 0, status, 16);
             status = MI_ERR;
             status = PcdAnticoll(SN);
-            OLED_DISPLAY_ZH_CN(0,0,10);
-            OLED_DISPLAY_ZH_CN(16,0,11);
-            OLED_DISPLAY_CHAR(32,0,':', 16);
-            OLED_DISPLAY_HEX(40,0,SN[0] >> 4);
-            OLED_DISPLAY_HEX(48,0,SN[0] & 0x0f);
-            OLED_DISPLAY_HEX(56,0,SN[1] >> 4);
-            OLED_DISPLAY_HEX(64,0,SN[1] & 0x0f);
-            OLED_DISPLAY_HEX(72,0,SN[2] >> 4);
-            OLED_DISPLAY_HEX(80,0,SN[2] & 0x0f);
-            OLED_DISPLAY_HEX(88,0,SN[3] >> 4);
-            OLED_DISPLAY_HEX(96,0,SN[3] & 0x0f);
+            OLED_DISPLAY_ZH_CN(0, 0, 10);
+            OLED_DISPLAY_ZH_CN(16, 0, 11);
+            OLED_DISPLAY_CHAR(32, 0, ':', 16);
+            OLED_DISPLAY_HEX(40, 0, SN[0] >> 4);
+            OLED_DISPLAY_HEX(48, 0, SN[0] & 0x0f);
+            OLED_DISPLAY_HEX(56, 0, SN[1] >> 4);
+            OLED_DISPLAY_HEX(64, 0, SN[1] & 0x0f);
+            OLED_DISPLAY_HEX(72, 0, SN[2] >> 4);
+            OLED_DISPLAY_HEX(80, 0, SN[2] & 0x0f);
+            OLED_DISPLAY_HEX(88, 0, SN[3] >> 4);
+            OLED_DISPLAY_HEX(96, 0, SN[3] & 0x0f);
             WaitCardOff();
         } else {
-            OLED_DISPLAY_CHAR(120,0,' ',16);
-            OLED_DISPLAY_CHAR(0,0,' ', 16);
-            OLED_DISPLAY_CHAR(8,0,' ', 16);
-            OLED_DISPLAY_CHAR(16,0,' ', 16);
-            OLED_DISPLAY_CHAR(24,0,' ', 16);
-            OLED_DISPLAY_CHAR(32,0,' ', 16);
-            OLED_DISPLAY_CHAR(40,0,' ', 16);
-            OLED_DISPLAY_CHAR(48,0,' ', 16);
-            OLED_DISPLAY_CHAR(56,0,' ', 16);
-            OLED_DISPLAY_CHAR(64,0,' ', 16);
-            OLED_DISPLAY_CHAR(72,0,' ', 16);
-            OLED_DISPLAY_CHAR(80,0,' ', 16);
-            OLED_DISPLAY_CHAR(88,0,' ', 16);
-            OLED_DISPLAY_CHAR(96,0,' ', 16);
+            OLED_DISPLAY_CHAR(120, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(0, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(8, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(16, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(24, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(32, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(40, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(48, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(56, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(64, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(72, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(80, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(88, 0, ' ', 16);
+            OLED_DISPLAY_CHAR(96, 0, ' ', 16);
         }
-        /* USER CODE END WHILE */
         key = TTP_SCAN();
         if ((key >= '0' && key <= '9') || key == '#') {
             enter_pwd();
@@ -141,7 +220,9 @@ int main(void) {
         }
         delay_ms(100);
         key = 0;
+        /* USER CODE END WHILE */
     }
+    /* USER CODE END 3 */
 }
 
 /**
