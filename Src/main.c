@@ -44,6 +44,7 @@ CRC_HandleTypeDef hcrc;
 
 SPI_HandleTypeDef hspi1;
 
+UART_HandleTypeDef huart4;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
@@ -58,6 +59,8 @@ static void MX_CRC_Init(void);
 static void MX_GPIO_Init(void);
 
 static void MX_SPI1_Init(void);
+
+static void MX_UART4_Init(void);
 
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -165,6 +168,7 @@ int main(void) {
     MX_CRC_Init();
     MX_GPIO_Init();
     MX_SPI1_Init();
+    MX_UART4_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
 
@@ -318,6 +322,37 @@ static void MX_SPI1_Init(void) {
 }
 
 /**
+  * @brief UART4 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_UART4_Init(void) {
+
+    /* USER CODE BEGIN UART4_Init 0 */
+
+    /* USER CODE END UART4_Init 0 */
+
+    /* USER CODE BEGIN UART4_Init 1 */
+
+    /* USER CODE END UART4_Init 1 */
+    huart4.Instance = UART4;
+    huart4.Init.BaudRate = 115200;
+    huart4.Init.WordLength = UART_WORDLENGTH_8B;
+    huart4.Init.StopBits = UART_STOPBITS_1;
+    huart4.Init.Parity = UART_PARITY_NONE;
+    huart4.Init.Mode = UART_MODE_TX_RX;
+    huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    huart4.Init.OverSampling = UART_OVERSAMPLING_16;
+    if (HAL_UART_Init(&huart4) != HAL_OK) {
+        Error_Handler();
+    }
+    /* USER CODE BEGIN UART4_Init 2 */
+
+    /* USER CODE END UART4_Init 2 */
+
+}
+
+/**
   * @brief USART1 Initialization Function
   * @param None
   * @retval None
@@ -357,6 +392,7 @@ static void MX_GPIO_Init(void) {
 
     /* GPIO Ports Clock Enable */
     __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
 
 }
 
