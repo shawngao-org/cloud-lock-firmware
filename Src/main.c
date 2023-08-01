@@ -150,11 +150,6 @@ int main(void) {
 
     /* USER CODE BEGIN Init */
     delay_init();
-    OLED_INIT();
-    TTP_INIT();
-    RC522_Init();
-    OLED_CLR();
-    OLED_display_home_page();
     /* USER CODE END Init */
 
     /* Configure the system clock */
@@ -171,7 +166,11 @@ int main(void) {
     MX_UART4_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
-
+    OLED_INIT();
+    TTP_INIT();
+    RC522_Init();
+    OLED_CLR();
+    OLED_display_home_page();
     /* USER CODE END 2 */
 
     /* Infinite loop */
