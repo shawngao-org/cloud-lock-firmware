@@ -358,29 +358,23 @@ void OLED_DISPLAY_CHAR(unsigned char x, unsigned char y, unsigned char c, unsign
 }
 
 void OLED_DISPLAY_STR(unsigned char x, unsigned char y, unsigned char* arr, unsigned char size) {
-    unsigned char i = 0;
-    while (arr[i] != '\0') {
-        OLED_DISPLAY_CHAR(x, y, arr[i], size);
+    while (*arr) {
+        OLED_DISPLAY_CHAR(x, y, *(arr++), size);
         x += 8;
         if (x > 120) {
-            x = 0; y +=2;
+            x = 0; y += 2;
         }
-        i++;
+        if (y > 6) {
+            OLED_CLR();
+            y = 0;
+        }
     }
 }
 
 void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex) {
-    unsigned char c = 0, i = 0;
-    c = hex;
-    if ( x > MAX_COLUMN - 1 ) {
-        x = 0; y = y + 2;
-    }
-    OLED_SET_POS( x, y );
-    for ( i = 0; i < 8; i++ )
-        OLED_WR_I2C_CMD_DATA(HEX_16[c * 16 + i], WR_DATA);
-    OLED_SET_POS( x, y + 1 );
-    for ( i = 0; i < 8; i++ )
-        OLED_WR_I2C_CMD_DATA(HEX_16[c * 16 + i + 8], WR_DATA);
+    char res[11] = {0};
+    sprintf(res, "%02X", hex);
+    OLED_DISPLAY_STR(x, y, (unsigned char *) res, 16);
 }
 
 void OLED_DISPLAY_ZH_CN(unsigned char x, unsigned char y, unsigned char index) {
