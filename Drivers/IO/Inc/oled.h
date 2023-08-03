@@ -5,7 +5,9 @@
 #ifndef CLOUD_LOCK_OLED_H
 #define CLOUD_LOCK_OLED_H
 
+#include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 #include "stm32f1xx_hal.h"
 #include "delay.h"
 
@@ -39,6 +41,11 @@ void OLED_INIT();
  * Clear OLED
  */
 void OLED_CLR();
+/**
+ * Clear specified line
+ * @param row
+ */
+void OLED_CLR_ROW(unsigned char row);
 
 /**
  * Display char
@@ -56,7 +63,21 @@ void OLED_DISPLAY_CHAR(unsigned char x, unsigned char y, unsigned char c, unsign
  * @param size Char size
  */
 void OLED_DISPLAY_STR(unsigned char x, unsigned char y, unsigned char* arr, unsigned char size);
+/**
+ * Display Hex
+ * @param x X POS
+ * @param y Y POS
+ * @param hex Hex number
+ */
 void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex);
+/**
+ * Display Hex array
+ * @param x X POS
+ * @param y Y POS
+ * @param hex Hex number array
+ * @param length Array length
+ */
+void OLED_DISPLAY_HEX_ARR(unsigned char x, unsigned char y, unsigned char *hex, unsigned char length);
 /**
  * Display Chinese
  * @param x X POS
@@ -64,6 +85,14 @@ void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex);
  * @param index Index of Chinese font array
  */
 void OLED_DISPLAY_ZH_CN(unsigned char x, unsigned char y, unsigned char index);
+/**
+ * Display Chinese array
+ * @param x X POS
+ * @param y Y POS
+ * @param arr Index array of Chinese font array
+ * @param length Array length
+ */
+void OLED_DISPLAY_ZH_CN_ARR(unsigned char x, unsigned char y, unsigned char *arr, unsigned char length);
 
 /**
  * Set display position

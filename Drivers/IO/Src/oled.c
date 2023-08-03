@@ -377,6 +377,20 @@ void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex) {
     OLED_DISPLAY_STR(x, y, (unsigned char *) res, 16);
 }
 
+void OLED_DISPLAY_HEX_ARR(unsigned char x, unsigned char y, unsigned char *hex, unsigned char length) {
+    for (int i = 0; i < length; ++i) {
+        OLED_DISPLAY_HEX(x, y, hex[i]);
+        x += 16;
+        if (x > 120) {
+            x = 0; y += 2;
+        }
+        if (y > 6) {
+            OLED_CLR();
+            y = 0;
+        }
+    }
+}
+
 void OLED_DISPLAY_ZH_CN(unsigned char x, unsigned char y, unsigned char index) {
     unsigned char i, addr = 0;
     OLED_SET_POS(x, y);
@@ -388,6 +402,27 @@ void OLED_DISPLAY_ZH_CN(unsigned char x, unsigned char y, unsigned char index) {
     for (i = 0; i < 16; i++) {
         OLED_WR_I2C_CMD_DATA(ZH_CN[2 * index + 1][i], WR_DATA);
         addr++;
+    }
+}
+
+void OLED_DISPLAY_ZH_CN_ARR(unsigned char x, unsigned char y, unsigned char *arr, unsigned char length) {
+    for (int i = 0; i < length; ++i) {
+        OLED_DISPLAY_ZH_CN(x, y, arr[i]);
+        x += 16;
+        if (x > 120) {
+            x = 0; y += 2;
+        }
+        if (y > 6) {
+            OLED_CLR();
+            y = 0;
+        }
+    }
+}
+
+void OLED_CLR_ROW(unsigned char row) {
+    unsigned char n;
+    for (n = 0; n < 128; n += 8) {
+        OLED_DISPLAY_CHAR(n, row, ' ', 16);
     }
 }
 
