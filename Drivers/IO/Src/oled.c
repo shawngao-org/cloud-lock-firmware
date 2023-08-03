@@ -335,7 +335,7 @@ void OLED_CLR() {
 }
 
 void OLED_DISPLAY_CHAR(unsigned char x, unsigned char y, unsigned char c, unsigned char size) {
-    unsigned char offset = 0, i = 0;
+    unsigned char offset, i;
     offset = c - 32;
     if (x > MAX_COLUMN - 1) {
         x = 0; y += 2;
