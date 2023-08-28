@@ -93,7 +93,7 @@ void OLED_display_enter_pwd() {
 }
 
 void enter_pwd() {
-    unsigned char key = 0xff;
+    unsigned char key;
     unsigned char pwd_chr_w = 0x08;
     unsigned char pwd_cur = 0;
     unsigned char pwd[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
@@ -104,8 +104,8 @@ void enter_pwd() {
             OLED_DISPLAY_CHAR(pwd_cur * pwd_chr_w, 4, key, 16);
             pwd[pwd_cur] = key;
             delay_ms(100);
-            key = 0;
             pwd_cur++;
+            ESP8266_INIT(&huart1, &huart4);
         } else {
             if (key == '*') {
                 if (pwd_cur > 0) {
@@ -116,7 +116,6 @@ void enter_pwd() {
                 pwd[pwd_cur] = 0xff;
                 OLED_DISPLAY_CHAR(pwd_cur * pwd_chr_w, 4, ' ', 16);
                 delay_ms(100);
-                key = 0;
             }
         }
     }
@@ -129,7 +128,7 @@ void enter_pwd() {
   */
 int main(void) {
     /* USER CODE BEGIN 1 */
-    unsigned char key = 0xff;
+    unsigned char key;
     unsigned char CT[2];
     unsigned char SN[4];
     unsigned char status;
@@ -161,7 +160,6 @@ int main(void) {
     OLED_INIT();
     TTP_INIT();
     RC522_Init();
-    OLED_CLR();
     OLED_display_home_page();
     /* USER CODE END 2 */
 
@@ -173,13 +171,16 @@ int main(void) {
         /* USER CODE BEGIN 3 */
         status = PcdRequest(PICC_REQALL, CT);
         if (status == MI_OK) {
-            OLED_DISPLAY_CHAR(120, 0, status, 16);
             status = MI_ERR;
             status = PcdAnticoll(SN);
-            OLED_DISPLAY_ZH_CN(0, 0, 10);
-            OLED_DISPLAY_ZH_CN(16, 0, 11);
-            OLED_DISPLAY_CHAR(32, 0, ':', 16);
-            OLED_DISPLAY_HEX_ARR(40, 0, SN, 4);
+            if (status == MI_OK) {
+                OLED_DISPLAY_ZH_CN(0, 0, 10);
+                OLED_DISPLAY_ZH_CN(16, 0, 11);
+                OLED_DISPLAY_CHAR(32, 0, ':', 16);
+                OLED_DISPLAY_HEX_ARR(40, 0, SN, 4);
+            } else {
+                OLED_DISPLAY_HEX(0, 0, status);
+            }
             WaitCardOff();
         } else {
             OLED_CLR_ROW(0);
@@ -194,7 +195,6 @@ int main(void) {
             OLED_display_home_page();
         }
         delay_ms(100);
-        key = 0;
         /* USER CODE END WHILE */
     }
     /* USER CODE END 3 */
