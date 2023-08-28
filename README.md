@@ -7,16 +7,17 @@ Currently the firmware is developed based on STM32F103RCT6.
 
 ## Getting Started
 ### Hardware
-| Emoji              | Description             |
-|--------------------|-------------------------|
-| :heavy_check_mark: | The driver is available |
+| Emoji              | Description                     |
+|--------------------|---------------------------------|
+| :heavy_check_mark: | The driver is available         |
 | :x:                | The driver is under development |
+| :construction:     | In progress. . .                |
 
 + :heavy_check_mark: STM32F103RCT6 or other development boards
 + :heavy_check_mark: 0.96 inch OLED display (4Pin: SDA, SCL, VCC +3.3V, GND)
 + :heavy_check_mark: TTP229 Matrix keypad Module (PH2.0 to 4Pin DuPont line: SCL, SDO, VCC +5V, GND)
 + :heavy_check_mark: RFID-RC522 (8Pin: SDA, SCK, MOSI, MISO, IRO, GND, RST, VCC +3.3V)
-+ :x: ESP-8266(ESP-12F)
++ :construction: ESP-8266(ESP-12F)
 
 ### Line connection
 | Device       | Device PIN | MCU PIN |
@@ -37,6 +38,10 @@ Currently the firmware is developed based on STM32F103RCT6.
 |              | GND        | GND     |
 |              | RST        | PB0     |
 |              | VCC        | 3V3     |
+| ESP-8266     | RX         | PC10    |
+|              | TX         | PC11    |
+|              | V (VCC)    | VCC5    |
+|              | G (GND)    | GND     |
 
 ### Software
 + CLion or other IDE
