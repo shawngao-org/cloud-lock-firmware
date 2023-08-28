@@ -13,21 +13,21 @@ void TTP_INIT() {
     GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-    SDA_OUT();
+    SDA_OUT()
     TTP_SDO = 0;
     TTP_SCL = 0;
     TTP_RD();
 }
 
 uint16_t TTP_RD() {
-    uint8_t i = 0;
+    uint8_t i;
     uint16_t real_value = 0;
-    SDA_OUT();
+    SDA_OUT()
     TTP_SDO = 1;
     delay_us(100);
     TTP_SDO = 0;
     delay_us(20);
-    SDA_IN();
+    SDA_IN()
     for (i = 0; i < 16; i++) {
         TTP_SCL = 1;
         delay_us(100);
