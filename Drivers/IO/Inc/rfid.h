@@ -161,6 +161,7 @@ void RFID_CLR_BIT_MSK(unsigned char, unsigned char);
 void RFID_ANTENNA_ON();
 void RFID_ANTENNA_OFF();
 void RFID_RST();
+void RFID_INIT_GPIO();
 void RFID_INIT();
 unsigned char RFID_REQ(unsigned char, unsigned char *);
 unsigned char RFID_2_CARD(unsigned char, unsigned char *, unsigned char, unsigned char *, unsigned int *);
