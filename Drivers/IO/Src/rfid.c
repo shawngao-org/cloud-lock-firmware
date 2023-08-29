@@ -94,6 +94,23 @@ void RFID_INIT_GPIO() {
     __HAL_SPI_ENABLE(&hspi1);
 }
 
+void RFID_INIT() {
+    RFID_RST_SET();
+    RFID_RST_SET();
+    RFID_RST();
+    WR_RFID_REG(Status2Reg, 0x08);
+    WR_RFID_REG(TModeReg, 0x8d);
+    WR_RFID_REG(TPrescalerReg, 0x3e);
+    WR_RFID_REG(TReloadRegL, 0x1e);
+    WR_RFID_REG(TReloadRegH, 0x00);
+    WR_RFID_REG(TxAutoReg, 0x40);
+    WR_RFID_REG(RxSelReg, 0x86);
+    WR_RFID_REG(RFCfgReg, 0x7f);
+    WR_RFID_REG(ModeReg, 0x3d);
+    HAL_Delay(1000);
+    RFID_ANTENNA_ON();
+}
+
 unsigned char RFID_REQ(unsigned char req_mode, unsigned char *tag_type) {
     unsigned char status;
     unsigned int back_bits;
