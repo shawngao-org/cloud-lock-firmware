@@ -23,15 +23,11 @@ unsigned char RD_RFID_REG(unsigned char addr) {
 }
 
 void RFID_SET_BIT_MSK(unsigned char reg, unsigned char msk) {
-    unsigned char tmp;
-    tmp = RD_RFID_REG(reg);
-    WR_RFID_REG(reg, tmp | msk);
+    WR_RFID_REG(reg, RD_RFID_REG(reg) | msk);
 }
 
 void RFID_CLR_BIT_MSK(unsigned char reg, unsigned char msk) {
-    unsigned char tmp;
-    tmp = RD_RFID_REG(reg);
-    WR_RFID_REG(reg, tmp & (~msk));
+    WR_RFID_REG(reg, RD_RFID_REG(reg) & (~msk));
 }
 
 void RFID_ANTENNA_ON() {
@@ -271,9 +267,7 @@ unsigned char RFID_WR_CARD(unsigned char block_addr, const unsigned char *dat) {
     status = RFID_2_CARD(PCD_TRX, buffer,
                          4, buffer,
                          &recv_bits);
-    if (status != MI_OK) {
-        status = MI_ERR;
-    }
+    status = status != MI_OK ? MI_ERR : status;
     if (status == MI_OK) {
         for (i = 0; i < 16; ++i) {
             buffer[i] = *(dat + i);
@@ -282,9 +276,7 @@ unsigned char RFID_WR_CARD(unsigned char block_addr, const unsigned char *dat) {
         status = RFID_2_CARD(PCD_TRX, buffer,
                              18, buffer,
                              &recv_bits);
-        if (status != MI_OK) {
-            status = MI_ERR;
-        }
+        status = status != MI_OK ? MI_ERR : status;
     }
     return status;
 }
@@ -299,10 +291,7 @@ unsigned char RFID_HALT() {
     status = RFID_2_CARD(PCD_TRX, buffer,
                          4, buffer,
                          &len);
-    if (status != MI_OK) {
-        status = MI_ERR;
-    }
-    return status;
+    return status != MI_OK ? MI_ERR : status;
 }
 
 void RFID_STOP_CRYPT() {
