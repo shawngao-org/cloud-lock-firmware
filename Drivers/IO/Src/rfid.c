@@ -46,21 +46,52 @@ void RFID_RST() {
     WR_RFID_REG(CommandReg, PCD_RST);
 }
 
-void RFID_INIT() {
-    RFID_RST_SET();
-    RFID_RST_SET();
-    RFID_RST();
-    WR_RFID_REG(Status2Reg, 0x08);
-    WR_RFID_REG(TModeReg, 0x8d);
-    WR_RFID_REG(TPrescalerReg, 0x3e);
-    WR_RFID_REG(TReloadRegL, 0x1e);
-    WR_RFID_REG(TReloadRegH, 0x00);
-    WR_RFID_REG(TxAutoReg, 0x40);
-    WR_RFID_REG(RxSelReg, 0x86);
-    WR_RFID_REG(RFCfgReg, 0x7f);
-    WR_RFID_REG(ModeReg, 0x3d);
-    HAL_Delay(1000);
-    RFID_ANTENNA_ON();
+void RFID_INIT_GPIO() {
+    GPIO_InitTypeDef  gpioInitTypeDef;
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+
+    gpioInitTypeDef.Pin = RFID_SDA_PIN_N;
+    gpioInitTypeDef.Mode = GPIO_MODE_OUTPUT_PP;
+    gpioInitTypeDef.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(RFID_SDA_PIN_G, &gpioInitTypeDef);
+
+    gpioInitTypeDef.Pin = RFID_SCK_PIN_N;
+    gpioInitTypeDef.Mode = GPIO_MODE_OUTPUT_PP;
+    gpioInitTypeDef.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(RFID_SCK_PIN_G, &gpioInitTypeDef);
+
+    gpioInitTypeDef.Pin = RFID_MISO_PIN_N;
+    gpioInitTypeDef.Mode = GPIO_MODE_INPUT;
+    gpioInitTypeDef.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(RFID_MISO_PIN_G, &gpioInitTypeDef);
+
+    gpioInitTypeDef.Pin = RFID_MOSI_PIN_N;
+    gpioInitTypeDef.Mode = GPIO_MODE_OUTPUT_PP;
+    gpioInitTypeDef.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(RFID_MOSI_PIN_G, &gpioInitTypeDef);
+
+    gpioInitTypeDef.Pin = RFID_RST_PIN_N;
+    gpioInitTypeDef.Mode = GPIO_MODE_OUTPUT_PP;
+    gpioInitTypeDef.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(RFID_RST_PIN_G, &gpioInitTypeDef);
+
+    hspi1.Instance = SPI1;
+    hspi1.Init.Mode = SPI_MODE_MASTER;
+    hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+    hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+    hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
+    hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
+    hspi1.Init.NSS = SPI_NSS_SOFT;
+    hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+    hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+    hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+    hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+    hspi1.Init.CRCPolynomial = 7;
+    if (HAL_SPI_Init(&hspi1) != HAL_OK) {
+        Error_Handler();
+    }
+    __HAL_SPI_ENABLE(&hspi1);
 }
 
 unsigned char RFID_REQ(unsigned char req_mode, unsigned char *tag_type) {
