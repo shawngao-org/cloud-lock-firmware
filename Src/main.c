@@ -129,7 +129,7 @@ void enter_pwd() {
 int main(void) {
     /* USER CODE BEGIN 1 */
     unsigned char key;
-    unsigned char CT[2];
+    unsigned char CT[MAX_LEN + 1];
     unsigned char SN[4];
     unsigned char status;
     /* USER CODE END 1 */
@@ -159,7 +159,7 @@ int main(void) {
     /* USER CODE BEGIN 2 */
     OLED_INIT();
     TTP_INIT();
-    RC522_Init();
+    RFID_INIT();
     OLED_display_home_page();
     /* USER CODE END 2 */
 
@@ -169,10 +169,10 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        status = PcdRequest(PICC_REQALL, CT);
+        status = RFID_REQ(PICC_REQIDL, CT);
         if (status == MI_OK) {
             status = MI_ERR;
-            status = PcdAnticoll(SN);
+            status = RFID_ANTI_COLL(SN);
             if (status == MI_OK) {
                 OLED_DISPLAY_ZH_CN(0, 0, 10);
                 OLED_DISPLAY_ZH_CN(16, 0, 11);
@@ -181,7 +181,7 @@ int main(void) {
             } else {
                 OLED_DISPLAY_HEX(0, 0, status);
             }
-            WaitCardOff();
+            RFID_WAIT_CARD();
         } else {
             OLED_CLR_ROW(0);
         }
