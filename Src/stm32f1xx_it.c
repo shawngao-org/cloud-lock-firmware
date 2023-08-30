@@ -42,7 +42,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+extern unsigned short esp8266_flag;
+extern unsigned char esp8266_rx_byte;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -239,7 +240,10 @@ void UART4_IRQHandler(void)
   /* USER CODE END UART4_IRQn 0 */
   HAL_UART_IRQHandler(&huart4);
   /* USER CODE BEGIN UART4_IRQn 1 */
-
+    if (__HAL_UART_GET_FLAG(&huart4, UART_FLAG_IDLE) != RESET) {
+        __HAL_UART_CLEAR_IDLEFLAG(&huart4);
+        esp8266_flag = 1;
+    }
   /* USER CODE END UART4_IRQn 1 */
 }
 
