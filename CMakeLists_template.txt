@@ -48,7 +48,7 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(${includes})
+include_directories(${includes} Drivers/IO/Inc)
 
 add_definitions(${defines})
 
