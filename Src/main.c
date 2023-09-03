@@ -44,8 +44,8 @@ CRC_HandleTypeDef hcrc;
 
 SPI_HandleTypeDef hspi1;
 
-UART_HandleTypeDef huart4;
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -60,15 +60,23 @@ static void MX_GPIO_Init(void);
 
 static void MX_SPI1_Init(void);
 
-static void MX_UART4_Init(void);
-
 static void MX_USART1_UART_Init(void);
+
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void USART1_Tx_String(char *str) {
+    HAL_UART_Transmit(&huart1, (uint8_t *) str, strlen(str), HAL_MAX_DELAY);
+}
+
+void USART2_Tx_String(char *str) {
+    HAL_UART_Transmit(&huart2, (uint8_t *) str, strlen(str), HAL_MAX_DELAY);
+}
+
 void OLED_display_home_page() {
     OLED_CLR();
     OLED_DISPLAY_ZH_CN(32, 2, 12);
@@ -154,8 +162,8 @@ int main(void) {
     MX_CRC_Init();
     MX_GPIO_Init();
     MX_SPI1_Init();
-    MX_UART4_Init();
     MX_USART1_UART_Init();
+    MX_USART2_UART_Init();
     /* USER CODE BEGIN 2 */
     OLED_INIT();
     TTP_INIT();
@@ -293,37 +301,6 @@ static void MX_SPI1_Init(void) {
 }
 
 /**
-  * @brief UART4 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_UART4_Init(void) {
-
-    /* USER CODE BEGIN UART4_Init 0 */
-
-    /* USER CODE END UART4_Init 0 */
-
-    /* USER CODE BEGIN UART4_Init 1 */
-
-    /* USER CODE END UART4_Init 1 */
-    huart4.Instance = UART4;
-    huart4.Init.BaudRate = 115200;
-    huart4.Init.WordLength = UART_WORDLENGTH_8B;
-    huart4.Init.StopBits = UART_STOPBITS_1;
-    huart4.Init.Parity = UART_PARITY_NONE;
-    huart4.Init.Mode = UART_MODE_TX_RX;
-    huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    huart4.Init.OverSampling = UART_OVERSAMPLING_16;
-    if (HAL_UART_Init(&huart4) != HAL_OK) {
-        Error_Handler();
-    }
-    /* USER CODE BEGIN UART4_Init 2 */
-
-    /* USER CODE END UART4_Init 2 */
-
-}
-
-/**
   * @brief USART1 Initialization Function
   * @param None
   * @retval None
@@ -331,7 +308,7 @@ static void MX_UART4_Init(void) {
 static void MX_USART1_UART_Init(void) {
 
     /* USER CODE BEGIN USART1_Init 0 */
-
+    __HAL_RCC_USART1_CLK_ENABLE();
     /* USER CODE END USART1_Init 0 */
 
     /* USER CODE BEGIN USART1_Init 1 */
@@ -355,6 +332,37 @@ static void MX_USART1_UART_Init(void) {
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void) {
+
+    /* USER CODE BEGIN USART2_Init 0 */
+    __HAL_RCC_USART2_CLK_ENABLE();
+    /* USER CODE END USART2_Init 0 */
+
+    /* USER CODE BEGIN USART2_Init 1 */
+
+    /* USER CODE END USART2_Init 1 */
+    huart2.Instance = USART2;
+    huart2.Init.BaudRate = 115200;
+    huart2.Init.WordLength = UART_WORDLENGTH_8B;
+    huart2.Init.StopBits = UART_STOPBITS_1;
+    huart2.Init.Parity = UART_PARITY_NONE;
+    huart2.Init.Mode = UART_MODE_TX_RX;
+    huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+    if (HAL_UART_Init(&huart2) != HAL_OK) {
+        Error_Handler();
+    }
+    /* USER CODE BEGIN USART2_Init 2 */
+
+    /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -363,7 +371,6 @@ static void MX_GPIO_Init(void) {
 
     /* GPIO Ports Clock Enable */
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
 
 }
 
@@ -400,5 +407,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

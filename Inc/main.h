@@ -50,7 +50,8 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+void USART1_Tx_String(char *);
+void USART2_Tx_String(char *);
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -61,8 +62,8 @@ extern CRC_HandleTypeDef hcrc;
 
 extern SPI_HandleTypeDef hspi1;
 
-extern UART_HandleTypeDef huart4;
 extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -75,5 +76,3 @@ extern UART_HandleTypeDef huart1;
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

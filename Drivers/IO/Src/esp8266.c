@@ -17,7 +17,7 @@ void ESP8266_CLR() {
 
 int ESP8266_EXEC(char *cmd, char *result) {
     ESP8266_CLR();
-    HAL_UART_Transmit(&huart4, (uint8_t *) cmd, strlen(cmd), HAL_MAX_DELAY);
+    USART2_Tx_String(cmd);
     while (esp8266_flag == 1) {
         if (strstr((const char *) esp8266_buf, result)) {
             return 0;
@@ -27,20 +27,22 @@ int ESP8266_EXEC(char *cmd, char *result) {
 }
 
 void ESP8266_INIT() {
-    HAL_UART_Receive_IT(&huart4, &esp8266_rx_byte, 1);
-    __HAL_UART_ENABLE_IT(&huart4, UART_IT_IDLE);
+    HAL_UART_Receive_IT(&huart2, &esp8266_rx_byte, 1);
+    __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+    USART1_Tx_String("Test ESP8266 ...");
     while (ESP8266_EXEC(TEST, "OK")) {
         delay_ms(500);
-        HAL_UART_Transmit(&huart1, (uint8_t *)"Retrying...\r\n", 14, HAL_MAX_DELAY);
-        HAL_UART_Transmit(&huart1, (uint8_t *)esp8266_buf, buf_size, HAL_MAX_DELAY);
+        USART1_Tx_String(".");
     }
-    HAL_UART_Transmit(&huart1, (uint8_t *)esp8266_buf, buf_size, HAL_MAX_DELAY);
+    USART1_Tx_String("OK\n");
+//    SET_WIFI();
+    SET_TIME();
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-    if (huart->Instance == UART4) {
+    if (huart->Instance == USART2) {
         esp8266_buf[esp8266_cnt] = esp8266_rx_byte;
         esp8266_cnt++;
-        HAL_UART_Receive_IT(&huart4, &esp8266_rx_byte, 1);
+        HAL_UART_Receive_IT(&huart2, &esp8266_rx_byte, 1);
     }
 }
