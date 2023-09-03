@@ -35,7 +35,8 @@ extern "C" {
 #include "delay.h"
 #include "oled.h"
 #include "ttp229.h"
-#include "rc522.h"
+#include "rfid.h"
+#include "esp8266.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
