@@ -61,6 +61,7 @@ void Error_Handler(void);
 extern CRC_HandleTypeDef hcrc;
 
 extern SPI_HandleTypeDef hspi1;
+extern SPI_HandleTypeDef hspi2;
 
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
