@@ -7,8 +7,8 @@
 void WR_RFID_REG(unsigned char addr, unsigned char dat) {
     unsigned char addr_bits = (addr << 1) & 0x7e;
     RFID_SDA_CLR();
-    HAL_SPI_Transmit(&hspi1, &addr_bits, 1, 500);
-    HAL_SPI_Transmit(&hspi1, &dat, 1, 500);
+    HAL_SPI_Transmit(&hspi2, &addr_bits, 1, 500);
+    HAL_SPI_Transmit(&hspi2, &dat, 1, 500);
     RFID_SDA_SET();
 }
 
@@ -16,8 +16,8 @@ unsigned char RD_RFID_REG(unsigned char addr) {
     unsigned char rx_bits;
     unsigned char addr_bits = ((addr << 1) & 0x7e) | 0x80;
     RFID_SDA_CLR();
-    HAL_SPI_Transmit(&hspi1, &addr_bits, 1, 500);
-    HAL_SPI_Receive(&hspi1, &rx_bits, 1, 500);
+    HAL_SPI_Transmit(&hspi2, &addr_bits, 1, 500);
+    HAL_SPI_Receive(&hspi2, &rx_bits, 1, 500);
     RFID_SDA_SET();
     return rx_bits;
 }
