@@ -28,6 +28,7 @@
  * Enable OLED display
  */
 void OLED_DISPLAY_ENABLE();
+
 /**
  * Disable OLED display
  */
@@ -37,10 +38,12 @@ void OLED_DISPLAY_DISABLE();
  * OLED initialization
  */
 void OLED_INIT();
+
 /**
  * Clear OLED
  */
 void OLED_CLR();
+
 /**
  * Clear specified line
  * @param row
@@ -55,6 +58,7 @@ void OLED_CLR_ROW(unsigned char row);
  * @param size Char size
  */
 void OLED_DISPLAY_CHAR(unsigned char x, unsigned char y, unsigned char c, unsigned char size);
+
 /**
  * Display string (char array)
  * @param x X POS
@@ -62,7 +66,8 @@ void OLED_DISPLAY_CHAR(unsigned char x, unsigned char y, unsigned char c, unsign
  * @param arr String or char array
  * @param size Char size
  */
-void OLED_DISPLAY_STR(unsigned char x, unsigned char y, unsigned char* arr, unsigned char size);
+void OLED_DISPLAY_STR(unsigned char x, unsigned char y, unsigned char *arr, unsigned char size);
+
 /**
  * Display Hex
  * @param x X POS
@@ -70,6 +75,7 @@ void OLED_DISPLAY_STR(unsigned char x, unsigned char y, unsigned char* arr, unsi
  * @param hex Hex number
  */
 void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex);
+
 /**
  * Display Hex array
  * @param x X POS
@@ -78,6 +84,7 @@ void OLED_DISPLAY_HEX(unsigned char x, unsigned char y, unsigned char hex);
  * @param length Array length
  */
 void OLED_DISPLAY_HEX_ARR(unsigned char x, unsigned char y, unsigned char *hex, unsigned char length);
+
 /**
  * Display Chinese
  * @param x X POS
@@ -85,6 +92,7 @@ void OLED_DISPLAY_HEX_ARR(unsigned char x, unsigned char y, unsigned char *hex, 
  * @param index Index of Chinese font array
  */
 void OLED_DISPLAY_ZH_CN(unsigned char x, unsigned char y, unsigned char index);
+
 /**
  * Display Chinese array
  * @param x X POS
@@ -102,6 +110,7 @@ void OLED_DISPLAY_ZH_CN_ARR(unsigned char x, unsigned char y, unsigned char *arr
 void OLED_SET_POS(unsigned char x, unsigned char y);
 
 void OLED_I2C_ENABLE();
+
 void OLED_I2C_DISABLE();
 
 /**
@@ -110,6 +119,7 @@ void OLED_I2C_DISABLE();
  * @param mode Mode: 0x00 -> CMD, 0x40 -> Data
  */
 void OLED_WR_I2C_CMD_DATA(unsigned char dat, unsigned char mode);
+
 void OLED_WR_I2C_BYTE(unsigned char dat);
 
 void OLED_I2C_WAIT_ACK();

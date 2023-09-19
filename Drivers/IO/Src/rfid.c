@@ -43,7 +43,7 @@ void RFID_RST() {
 }
 
 void RFID_INIT_GPIO() {
-    GPIO_InitTypeDef  gpioInitTypeDef;
+    GPIO_InitTypeDef gpioInitTypeDef;
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
 

@@ -155,24 +155,43 @@
  * Function
  */
 void WR_RFID_REG(unsigned char, unsigned char);
+
 unsigned char RD_RFID_REG(unsigned char);
+
 void RFID_SET_BIT_MSK(unsigned char, unsigned char);
+
 void RFID_CLR_BIT_MSK(unsigned char, unsigned char);
+
 void RFID_ANTENNA_ON();
+
 void RFID_ANTENNA_OFF();
+
 void RFID_RST();
+
 void RFID_INIT_GPIO();
+
 void RFID_INIT();
+
 unsigned char RFID_REQ(unsigned char, unsigned char *);
+
 unsigned char RFID_2_CARD(unsigned char, unsigned char *, unsigned char, unsigned char *, unsigned int *);
+
 unsigned char RFID_ANTI_COLL(unsigned char *);
+
 void RFID_CAL_CRC(const unsigned char *, unsigned char, unsigned char *);
+
 unsigned char RFID_SELECT_TAG(const unsigned char *);
+
 unsigned char RFID_AUTH(unsigned char, unsigned char, const unsigned char *, const unsigned char *);
+
 unsigned char RFID_RD_CARD(unsigned char, unsigned char *);
+
 unsigned char RFID_WR_CARD(unsigned char, const unsigned char *);
+
 unsigned char RFID_HALT();
+
 void RFID_STOP_CRYPT();
+
 void RFID_WAIT_CARD();
 
 #endif //CLOUD_LOCK_RFID_H

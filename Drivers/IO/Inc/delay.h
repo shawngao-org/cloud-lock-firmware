@@ -12,7 +12,9 @@
 #define USE_DELAY_INT 1
 
 void delay_init();
+
 void delay_us(uint32_t nus);
+
 void delay_ms(uint32_t nms);
 
 #endif //CLOUD_LOCK_DELAY_H
