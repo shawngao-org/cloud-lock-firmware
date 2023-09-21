@@ -58,3 +58,17 @@ Currently the firmware is developed based on STM32F103RCT6.
 
 ## License
 This project is licensed under the ***MIT*** License - see the LICENSE.md file for details.
+
+## References/information
+
++ [野火STM32庫開發實戰指南](https://doc.embedfire.com/)
++ [RFC3174 - SHA-1](https://www.rfc-editor.org/rfc/rfc3174)
++ Waiting for update ...
+
+## Acknowledgments
+
+> CLion is an IDE that maximizes developer productivity in every aspect.
+
+Special thanks to JetBrains for providing a free CLion license for open source and educational learning.
+
+<img src="./jetbrains-variant-3.png" alt="Logo" width="200"/>
