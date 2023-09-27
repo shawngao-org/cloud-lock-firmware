@@ -49,7 +49,9 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+FATFS fatfs;
+FIL CONF_FILE;
+FRESULT res_f;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -59,11 +61,13 @@ static void MX_CRC_Init(void);
 
 static void MX_GPIO_Init(void);
 
-static void MX_SPI2_Init(void);
-
 static void MX_USART1_UART_Init(void);
 
 static void MX_USART2_UART_Init(void);
+
+static void MX_SPI1_Init(void);
+
+static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -157,19 +161,32 @@ int main(void) {
 
     /* USER CODE BEGIN SysInit */
     RFID_INIT_GPIO();
+    SD_GPIO_Configuration();
     /* USER CODE END SysInit */
 
     /* Initialize all configured peripherals */
     MX_CRC_Init();
     MX_GPIO_Init();
-    MX_SPI1_Init();
-    MX_SPI2_Init();
     MX_USART1_UART_Init();
     MX_USART2_UART_Init();
+    MX_SPI1_Init();
+    MX_SPI2_Init();
     /* USER CODE BEGIN 2 */
     OLED_INIT();
     TTP_INIT();
     RFID_INIT();
+    res_f = f_mount(&fatfs, "0:", 1);
+    if (res_f) {
+        OLED_DISPLAY_STR(0, 0, (unsigned char *) "SD card Err", 16);
+        OLED_DISPLAY_HEX(0, 2, res_f);
+        Error_Handler();
+    }
+    res_f = f_open(&CONF_FILE, "0:config.ini", FA_OPEN_EXISTING | FA_READ);
+    if (res_f) {
+        OLED_DISPLAY_STR(0, 0, (unsigned char *) "Read file Err", 16);
+        OLED_DISPLAY_HEX(0, 2, res_f);
+        Error_Handler();
+    }
     OLED_display_home_page();
     /* USER CODE END 2 */
 
