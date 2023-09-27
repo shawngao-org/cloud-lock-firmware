@@ -37,6 +37,9 @@ extern "C" {
 #include "ttp229.h"
 #include "rfid.h"
 #include "esp8266.h"
+#include "bsp_spi_sdcard.h"
+#include "ff.h"
+#include "ini.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -66,6 +69,8 @@ extern SPI_HandleTypeDef hspi2;
 
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
+
+extern FIL CONF_FILE;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
