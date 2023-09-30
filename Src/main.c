@@ -122,7 +122,6 @@ void enter_pwd() {
             pwd[pwd_cur] = key;
             delay_ms(100);
             pwd_cur++;
-            ESP8266_INIT(&huart1, &huart4);
         } else {
             if (key == '*') {
                 if (pwd_cur > 0) {
@@ -192,7 +191,10 @@ int main(void) {
         OLED_DISPLAY_HEX(0, 2, res_f);
         Error_Handler();
     }
+    ESP8266_INIT();
     OLED_display_home_page();
+    RTC_TimeTypeDef rtcTimeTypeDef;
+    RTC_DateTypeDef rtcDateTypeDef;
     /* USER CODE END 2 */
 
     /* Infinite loop */
@@ -217,6 +219,16 @@ int main(void) {
         } else {
             OLED_CLR_ROW(0);
         }
+        HAL_RTC_GetTime(&hrtc, &rtcTimeTypeDef, RTC_FORMAT_BIN);
+        HAL_RTC_GetDate(&hrtc, &rtcDateTypeDef, RTC_FORMAT_BIN);
+        char time[15];
+        sprintf(time, "%02d-%02d %02d:%02d:%02d",
+                rtcDateTypeDef.Month,
+                rtcDateTypeDef.Date,
+                rtcTimeTypeDef.Hours,
+                rtcTimeTypeDef.Minutes,
+                rtcTimeTypeDef.Seconds);
+        OLED_DISPLAY_STR(4, 6, (unsigned char *) time, 16);
         key = TTP_SCAN();
         if ((key >= '0' && key <= '9') || key == '#') {
             enter_pwd();
