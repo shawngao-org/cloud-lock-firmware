@@ -64,6 +64,8 @@ void Error_Handler(void);
 /* USER CODE BEGIN EFP */
 extern CRC_HandleTypeDef hcrc;
 
+extern RTC_HandleTypeDef hrtc;
+
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi2;
 

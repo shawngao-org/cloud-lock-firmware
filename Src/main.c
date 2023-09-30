@@ -244,11 +244,11 @@ void SystemClock_Config(void) {
     /** Initializes the RCC Oscillators according to the specified parameters
     * in the RCC_OscInitTypeDef structure.
     */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+    RCC_OscInitStruct.LSEState = RCC_LSE_ON;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-    RCC_OscInitStruct.LSIState = RCC_LSI_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
@@ -269,7 +269,7 @@ void SystemClock_Config(void) {
         Error_Handler();
     }
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
-    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
         Error_Handler();
     }
@@ -327,29 +327,33 @@ static void MX_RTC_Init(void) {
     }
 
     /* USER CODE BEGIN Check_RTC_BKUP */
-    __HAL_RCC_BKP_CLK_ENABLE();
     __HAL_RCC_PWR_CLK_ENABLE();
-    /* USER CODE END Check_RTC_BKUP */
+    __HAL_RCC_BKP_CLK_ENABLE();
+    if (HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1) != 0x5011) {
+        HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR1, 0x5011);
+        /* USER CODE END Check_RTC_BKUP */
 
-    /** Initialize RTC and set the Time and Date
-    */
-    sTime.Hours = 0x0;
-    sTime.Minutes = 0x0;
-    sTime.Seconds = 0x0;
+        /** Initialize RTC and set the Time and Date
+        */
+        sTime.Hours = 0x0;
+        sTime.Minutes = 0x0;
+        sTime.Seconds = 0x0;
 
-    if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK) {
-        Error_Handler();
+        if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK) {
+            Error_Handler();
+        }
+        DateToUpdate.WeekDay = RTC_WEEKDAY_MONDAY;
+        DateToUpdate.Month = RTC_MONTH_JANUARY;
+        DateToUpdate.Date = 0x1;
+        DateToUpdate.Year = 0x0;
+
+        if (HAL_RTC_SetDate(&hrtc, &DateToUpdate, RTC_FORMAT_BCD) != HAL_OK) {
+            Error_Handler();
+        }
+        /* USER CODE BEGIN RTC_Init 2 */
     }
-    DateToUpdate.WeekDay = RTC_WEEKDAY_MONDAY;
-    DateToUpdate.Month = RTC_MONTH_JANUARY;
-    DateToUpdate.Date = 0x1;
-    DateToUpdate.Year = 0x0;
-
-    if (HAL_RTC_SetDate(&hrtc, &DateToUpdate, RTC_FORMAT_BCD) != HAL_OK) {
-        Error_Handler();
-    }
-    /* USER CODE BEGIN RTC_Init 2 */
     __HAL_RTC_SECOND_ENABLE_IT(&hrtc, RTC_IT_SEC);
+    __HAL_RCC_RTC_ENABLE();
     /* USER CODE END RTC_Init 2 */
 
 }
@@ -497,6 +501,7 @@ static void MX_GPIO_Init(void) {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     /* GPIO Ports Clock Enable */
+    __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
